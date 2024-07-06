@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "328346692650",
+    "project_id": "mediamingle-de333",
+    "storage_bucket": "mediamingle-de333.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:328346692650:android:98e541a9cdc4a14af7a753",
+        "android_client_info": {
+          "package_name": "com.lanaeus.media_mingle"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOlZn5rTQkNLkCbsN-MC7q11HDes6r1RY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
