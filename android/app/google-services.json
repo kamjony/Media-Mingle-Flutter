@@ -12,7 +12,12 @@
           "package_name": "com.lanaeus.media_mingle"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "328346692650-5g6mneolq398pe7q1nomdn39fr5l8c9h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDOlZn5rTQkNLkCbsN-MC7q11HDes6r1RY"
@@ -20,7 +25,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "328346692650-5g6mneolq398pe7q1nomdn39fr5l8c9h.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "328346692650-018ulkm2ust58h1uekci32ok2j1vs6g4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.lanaeus.mediaMingle"
+              }
+            }
+          ]
         }
       }
     }

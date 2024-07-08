@@ -63,6 +63,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '328346692650',
     projectId: 'mediamingle-de333',
     storageBucket: 'mediamingle-de333.appspot.com',
+    iosClientId: '328346692650-018ulkm2ust58h1uekci32ok2j1vs6g4.apps.googleusercontent.com',
     iosBundleId: 'com.lanaeus.mediaMingle',
   );
+
 }
