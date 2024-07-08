@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="facebook_app_id">491267716727225</string>
+    <string name="fb_login_protocol_scheme">fb491267716727225</string>
+    <string name="facebook_client_token">748c5267ce6d427f81f364616b2b904b</string>
+    <string name="app_name">Media Mingle</string>
+</resources>

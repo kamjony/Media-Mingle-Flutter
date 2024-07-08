@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+
       theme: ThemeData(
         useMaterial3: false,
         brightness: Brightness.light,
@@ -27,6 +28,8 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.dark,
         primarySwatch: Colors.blueGrey,
         indicatorColor: Colors.blueGrey,
+        appBarTheme: AppBarTheme(centerTitle: true),
+
       ),
       themeMode: ThemeMode.dark,
       debugShowCheckedModeBanner: false,
