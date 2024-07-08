@@ -38,10 +38,13 @@
     <key>CFBundleURLTypes</key>
     <array>
       <dict>
-      <key>CFBundleURLSchemes</key>
-      <array>
-        <string>fb491267716727225</string>
-      </array>
+          <key>CFBundleTypeRole</key>
+          <string>Editor</string>
+          <key>CFBundleURLSchemes</key>
+          <array>
+              <string>fb491267716727225</string>
+              <string>com.googleusercontent.apps.861823949799-vc35cprkp249096uujjn0vvnmcvjppkn</string>
+          </array>
       </dict>
     </array>
     <key>FacebookAppID</key>
