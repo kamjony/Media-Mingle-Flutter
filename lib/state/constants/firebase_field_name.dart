@@ -11,4 +11,5 @@ class FirebaseFieldName {
   static const date = 'date';
   static const displayName = 'display_name';
   static const email = 'email';
+  static const profilePhotoUrl = 'profile_photo_url';
 }

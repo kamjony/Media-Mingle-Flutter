@@ -18,6 +18,8 @@ class Authenticator {
 
   String? get email => currentUser?.email;
 
+  String? get userPhoto => currentUser?.photoURL;
+
   Future<AuthResult> loginWithFacebook() async {
     final loginResult = await FacebookAuth.instance.login();
     final token = loginResult.accessToken?.tokenString;

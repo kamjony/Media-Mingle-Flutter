@@ -50,5 +50,6 @@ class AuthStateNotifier extends StateNotifier<AuthState> {
       _userInfoStorage.saveUserInfo(
           userId: userId,
           displayName: _authenticator.displayName,
-          email: _authenticator.email);
+          email: _authenticator.email,
+          profilePhotoUrl: _authenticator.userPhoto);
 }
