@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:math';
+import 'package:crypto/crypto.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -20,19 +23,45 @@ class Authenticator {
 
   String? get userPhoto => currentUser?.photoURL;
 
+  String _generateNonce([int length = 32]) {
+    final charset =
+        '0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._';
+    final random = Random.secure();
+    return List.generate(length, (_) => charset[random.nextInt(charset.length)])
+        .join();
+  }
+
+  /// Returns the sha256 hash of [input] in hex notation.
+  String _sha256ofString(String input) {
+    final bytes = utf8.encode(input);
+    final digest = sha256.convert(bytes);
+    return digest.toString();
+  }
+
   Future<AuthResult> loginWithFacebook() async {
-    final loginResult = await FacebookAuth.instance.login();
+    final rawNonce = _generateNonce();
+    final nonce = _sha256ofString(rawNonce);
+    final loginResult = await FacebookAuth.instance.login(nonce: nonce);
     final token = loginResult.accessToken?.tokenString;
     if (token == null) {
       return AuthResult.aborted;
     }
-    final oAuthCredentials = FacebookAuthProvider.credential(token);
+    late final OAuthCredential oAuthCredentials;
+    if (loginResult.accessToken?.type == AccessTokenType.limited) {
+      oAuthCredentials = OAuthProvider('facebook.com').credential(
+        idToken: token,
+        rawNonce: rawNonce,
+      );
+    } else {
+      oAuthCredentials = FacebookAuthProvider.credential(token);
+    }
     try {
       await FirebaseAuth.instance.signInWithCredential(
         oAuthCredentials,
       );
       return AuthResult.success;
     } on FirebaseAuthException catch (e) {
+      print(e.message);
       final email = e.email;
       final credential = e.credential;
       if (e.code == Constants.accountExistsWithDifferentCredential &&
