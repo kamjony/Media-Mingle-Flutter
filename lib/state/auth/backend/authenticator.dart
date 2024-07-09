@@ -24,7 +24,7 @@ class Authenticator {
   String? get userPhoto => currentUser?.photoURL;
 
   String _generateNonce([int length = 32]) {
-    final charset =
+    const charset =
         '0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._';
     final random = Random.secure();
     return List.generate(length, (_) => charset[random.nextInt(charset.length)])
@@ -61,7 +61,6 @@ class Authenticator {
       );
       return AuthResult.success;
     } on FirebaseAuthException catch (e) {
-      print(e.message);
       final email = e.email;
       final credential = e.credential;
       if (e.code == Constants.accountExistsWithDifferentCredential &&
