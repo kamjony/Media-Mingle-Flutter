@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:media_mingle/state/auth/backend/authenticator.dart';
 import 'firebase_options.dart';
 import 'dart:developer' as devtools show log;
@@ -13,7 +14,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.dark,
         primarySwatch: Colors.blueGrey,
         indicatorColor: Colors.blueGrey,
-        appBarTheme: AppBarTheme(centerTitle: true),
+        appBarTheme: const AppBarTheme(centerTitle: true),
       ),
       themeMode: ThemeMode.dark,
       debugShowCheckedModeBanner: false,

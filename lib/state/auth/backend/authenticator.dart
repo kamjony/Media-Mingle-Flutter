@@ -14,7 +14,9 @@ class Authenticator {
 
   bool get isAlreadyLoggedIn => userId != null;
 
-  String? get displayName => currentUser?.email;
+  String get displayName => currentUser?.displayName ?? '';
+
+  String? get email => currentUser?.email;
 
   Future<AuthResult> loginWithFacebook() async {
     final loginResult = await FacebookAuth.instance.login();
