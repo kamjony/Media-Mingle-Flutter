@@ -1,8 +1,6 @@
 //A singleton class
 
 import 'dart:async';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:media_mingle/view/components/constants/strings.dart';
 import 'package:media_mingle/view/components/loading/loading_screen_controller.dart';
