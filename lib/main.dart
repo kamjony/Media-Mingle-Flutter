@@ -8,6 +8,7 @@ import 'firebase_options.dart';
 import 'dart:developer' as devtools show log;
 
 import 'state/auth/providers/is_logged_in_provider.dart';
+import 'state/providers/is_loading_provider.dart';
 
 extension Log on Object {
   void log() => devtools.log(toString());
@@ -43,7 +44,16 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Consumer(
         builder: (context, ref, child) {
-          final isLoggedIn = ref.watch(isLoggedInProvider);
+          //Show loading screen
+          ref.listen<bool>(isLoadingProvider, (_, isLoading) { //listen does not rebuild widget
+            if (isLoading) {
+              LoadingScreen.instance().show(context: context);
+            } else {
+              LoadingScreen.instance().hide();
+            }
+          });
+
+          final isLoggedIn = ref.watch(isLoggedInProvider);  //watch rebuilds widget
           if (isLoggedIn) {
             return const MainView();
           } else {
