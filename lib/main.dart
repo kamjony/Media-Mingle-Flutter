@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:media_mingle/state/auth/providers/auth_state_provider.dart';
-import 'package:media_mingle/view/components/animations/data_not_found_animation_view.dart';
-import 'package:media_mingle/view/components/animations/empty_contents_animation_view.dart';
-import 'package:media_mingle/view/components/animations/error_animation_view.dart';
-import 'package:media_mingle/view/components/animations/loading_animation_view.dart';
-import 'package:media_mingle/view/components/animations/small_error_animation_view.dart';
 import 'package:media_mingle/view/components/loading/loading_screen.dart';
+import 'package:media_mingle/view/main/main_view.dart';
 import 'firebase_options.dart';
 import 'dart:developer' as devtools show log;
 
@@ -43,7 +38,7 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.dark,
         primarySwatch: Colors.blueGrey,
         indicatorColor: Colors.blueGrey,
-        appBarTheme: const AppBarTheme(centerTitle: true),
+        appBarTheme: const AppBarTheme(),
       ),
       themeMode: ThemeMode.dark,
       debugShowCheckedModeBanner: false,
@@ -65,32 +60,6 @@ class MyApp extends StatelessWidget {
             return const LoginView();
           }
         },
-      ),
-    );
-  }
-}
-
-class MainView extends StatelessWidget {
-  const MainView({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Main View'),
-      ),
-      body: Column(
-        children: [
-          Consumer(builder: (ctx, ref, child) {
-            return TextButton(
-                onPressed: () async {
-                  await ref.read(authStateProvider.notifier).logOut();
-                },
-                child: const Text(
-                  'Log out',
-                ));
-          })
-        ],
       ),
     );
   }
