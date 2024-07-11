@@ -8,6 +8,7 @@ import 'dart:developer' as devtools show log;
 
 import 'state/auth/providers/is_logged_in_provider.dart';
 import 'state/providers/is_loading_provider.dart';
+import 'view/login/login_view.dart';
 
 extension Log on Object {
   void log() => devtools.log(toString());
@@ -90,31 +91,4 @@ class MainView extends StatelessWidget {
   }
 }
 
-
-class LoginView extends ConsumerWidget {
-  const LoginView({super.key});
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Login View'),
-      ),
-      body: Column(
-        children: [
-          TextButton(
-              onPressed: ref.read(authStateProvider.notifier).loginWithGoogle,
-              child: const Text(
-                'Sign in with Google',
-              )),
-          TextButton(
-              onPressed: ref.read(authStateProvider.notifier).loginWithFacebook,
-              child: const Text(
-                'Sign in with Facebook',
-              )),
-        ],
-      ),
-    );
-  }
-}
 
