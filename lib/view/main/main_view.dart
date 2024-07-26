@@ -9,6 +9,7 @@ import 'package:media_mingle/view/components/dialogs/alert_dialog_model.dart';
 import 'package:media_mingle/view/components/dialogs/logout_dialog.dart';
 import 'package:media_mingle/view/constants/strings.dart';
 import 'package:media_mingle/view/create_new_post/create_new_post_view.dart';
+import 'package:media_mingle/view/tabs/home/home_view.dart';
 import 'package:media_mingle/view/tabs/search/search_view.dart';
 import 'package:media_mingle/view/tabs/users_posts/user_posts_view.dart';
 
@@ -93,7 +94,7 @@ class _MainViewState extends ConsumerState<MainView> {
             children: [
               UserPostsView(),
               SearchView(),
-              UserPostsView(),
+              HomeView(),
             ],
           ),
         ));
