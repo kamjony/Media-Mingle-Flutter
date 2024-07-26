@@ -43,7 +43,7 @@ class DeletePostNotifier extends StateNotifier<IsLoading> {
 
       //finally delete the post itself
       final postInCollection = await FirebaseFirestore.instance.collection(FirebaseCollectionName.posts)
-      .where(FirebaseFieldName.postId, isEqualTo: post.postId).limit(1).get();
+      .where(FieldPath.documentId, isEqualTo: post.postId).limit(1).get();
 
       for (final post in postInCollection.docs) {
         await post.reference.delete();
