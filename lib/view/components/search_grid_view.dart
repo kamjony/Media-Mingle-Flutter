@@ -4,6 +4,7 @@ import 'package:media_mingle/state/posts/providers/posts_by_search_term_provider
 import 'package:media_mingle/view/components/animations/data_not_found_animation_view.dart';
 import 'package:media_mingle/view/components/animations/empty_contents_with_text_animation_view.dart';
 import 'package:media_mingle/view/components/animations/error_animation_view.dart';
+import 'package:media_mingle/view/components/post/post_sliver_grid_view.dart';
 import 'package:media_mingle/view/components/post/posts_gridview.dart';
 import 'package:media_mingle/view/constants/strings.dart';
 
@@ -15,23 +16,25 @@ class SearchGridView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     if (searchTerm.isEmpty) {
-      return const EmptyContentsWithTextAnimationView(
-          text: Strings.enterYourSearchTerm);
+      return const SliverToBoxAdapter(
+        child: EmptyContentsWithTextAnimationView(
+            text: Strings.enterYourSearchTerm),
+      );
     }
 
     final posts = ref.watch(postsBySearchTermProvider(searchTerm));
 
     return posts.when(data: (data) {
       if (data.isEmpty) {
-        return const DataNotFoundAnimationView();
+        return const SliverToBoxAdapter(child: DataNotFoundAnimationView(),);
       } else {
-        return PostsGridView(posts: data);
+        return PostsSliverGridView(posts: data);
       }
     }, error: (error, stackTrace) {
-      return const ErrorAnimationView();
+      return const SliverToBoxAdapter(child: ErrorAnimationView(),);
     }, loading: () {
       return const Center(
-        child: CircularProgressIndicator(),
+        child: SliverToBoxAdapter(child: CircularProgressIndicator(),),
       );
     });
   }
