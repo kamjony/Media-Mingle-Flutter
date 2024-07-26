@@ -63,7 +63,7 @@ class _CreateNewPostViewState extends ConsumerState<CreateNewPostView> {
                               message: message,
                               postSettings: postSettings,
                               userId: userId);
-                      if (isUploaded && mounted) {
+                      if (isUploaded && context.mounted) {
                         Navigator.of(context).pop();
                       }
                     }
