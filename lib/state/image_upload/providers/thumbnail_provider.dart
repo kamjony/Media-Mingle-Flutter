@@ -6,10 +6,12 @@ import 'package:media_mingle/state/image_upload/models/file_type.dart';
 import 'package:media_mingle/state/image_upload/models/image_with_aspect_ratio.dart';
 import 'package:media_mingle/state/image_upload/models/thumbnail_request.dart';
 import 'package:video_thumbnail/video_thumbnail.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-final thumbnailProvider = FutureProvider.family
-    .autoDispose<ImageWithAspectRatio, ThumbnailRequest>(
-        (ref, ThumbnailRequest request) async {
+part 'thumbnail_provider.g.dart';
+
+@riverpod
+Future<ImageWithAspectRatio> thumbnail(ThumbnailRef ref, {required ThumbnailRequest request}) async {
   final Image image;
 
   switch (request.fileType) {
@@ -36,4 +38,4 @@ final thumbnailProvider = FutureProvider.family
     image: image,
     aspectRatio: aspectRatio,
   );
-});
+}

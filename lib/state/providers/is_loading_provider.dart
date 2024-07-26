@@ -4,8 +4,12 @@ import 'package:media_mingle/state/comments/providers/delete_comment_provider.da
 import 'package:media_mingle/state/comments/providers/send_comment_provider.dart';
 import 'package:media_mingle/state/image_upload/providers/image_uploader_provider.dart';
 import 'package:media_mingle/state/posts/providers/delete_post_provider.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-final isLoadingProvider = Provider<bool>((ref) {
+part 'is_loading_provider.g.dart';
+
+@riverpod
+bool isLoading(IsLoadingRef ref) {
   final authState = ref.watch(authStateProvider);
   final isUploadingImage = ref.watch(imageUploaderProvider);
   final isSendingComment = ref.watch(sendCommentProvider);
@@ -17,4 +21,4 @@ final isLoadingProvider = Provider<bool>((ref) {
       isSendingComment ||
       isDeletingComment ||
       isDeletingPost;
-});
+}

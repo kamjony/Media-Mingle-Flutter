@@ -4,10 +4,13 @@ import 'package:media_mingle/state/constants/firebase_collection_name.dart';
 import 'package:media_mingle/state/constants/firebase_field_name.dart';
 import 'package:media_mingle/state/likes/models/like.dart';
 import 'package:media_mingle/state/likes/models/likes_dislike_request.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-final likeDislikePostProvider = FutureProvider.family
-    .autoDispose<bool, LikesDislikeRequest>(
-        (ref, LikesDislikeRequest request) async {
+part 'like_dislike_post_provider.g.dart';
+
+@riverpod
+Future<bool> likeDislikePost(LikeDislikePostRef ref,
+    {required LikesDislikeRequest request}) async {
   final query = FirebaseFirestore.instance
       .collection(FirebaseCollectionName.likes)
       .where(
@@ -49,4 +52,4 @@ final likeDislikePostProvider = FutureProvider.family
       return false;
     }
   }
-});
+}
