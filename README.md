@@ -38,27 +38,27 @@ Follow these steps to get a local copy of the project up and running:
   - Installation
 
  ### Clone the repository:
-'''
+```
 git clone https://github.com/your-username/media-mingle.git
-'''
+```
 
  ### Navigate to the project directory:
-'''
+```
 cd media-mingle
-'''
+```
 
  ### Install the dependencies:
-'''
+```
 flutter pub get
-'''
+```
 
  ### Set up Firebase for both Android and iOS by following the official documentation.
 
  ### Run the application:
 
-'''
+```
 flutter run
-'''
+```
 
 
 
