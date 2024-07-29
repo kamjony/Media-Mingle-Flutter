@@ -69,5 +69,5 @@ Contributions are welcome! Please fork the repository and create a pull request 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Contact
-Author: Mohammad Imran Alamgir  
-Email: your-email@example.com
+Author: Md Kamrul Amin
+Email: kamjony7@gmail.com
