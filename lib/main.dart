@@ -4,15 +4,10 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:media_mingle/view/components/loading/loading_screen.dart';
 import 'package:media_mingle/view/main/main_view.dart';
 import 'firebase_options.dart';
-import 'dart:developer' as devtools show log;
 
 import 'state/auth/providers/is_logged_in_provider.dart';
 import 'state/providers/is_loading_provider.dart';
 import 'view/login/login_view.dart';
-
-extension Log on Object {
-  void log() => devtools.log(toString());
-}
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
